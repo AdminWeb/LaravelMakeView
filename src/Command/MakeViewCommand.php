@@ -18,7 +18,7 @@ class MakeViewCommand extends Command
 
     public function __construct()
     {
-        parente::__construct();
+        parent::__construct();
     }
 
     public function handle()
