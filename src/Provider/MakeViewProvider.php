@@ -6,7 +6,7 @@
  * Time: 11:54
  */
 
-namespace Laravel\Provider;
+namespace LaravelMakeView\Provider;
 
 use Illuminate\Support\ServiceProvider;
 

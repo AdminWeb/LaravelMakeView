@@ -6,7 +6,7 @@
  * Time: 11:51
  */
 
-namespace Laravel\Command;
+namespace LaravelMakeView\Command;
 
 use Illuminate\Console\Command;
 
