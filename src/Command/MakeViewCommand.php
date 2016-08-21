@@ -47,5 +47,5 @@ class MakeViewCommand extends Command
         file_put_contents(resource_path('views/' . $path . $view . '.blade.php'), $content);
         $this->info('Success on created view.');
 
-    } f
+    }
 }
