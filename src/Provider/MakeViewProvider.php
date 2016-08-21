@@ -8,6 +8,7 @@
 
 namespace LaravelMakeView\Provider;
 
+use LaravelMakeView\Command\MakeViewCommand;
 use Illuminate\Support\ServiceProvider;
 
 class MakeViewProvider extends ServiceProvider
@@ -20,6 +21,6 @@ class MakeViewProvider extends ServiceProvider
 
     public function register()
     {
-        $this->commands(LaravelMakeView\Command\MakeViewCommand::class);
+        $this->commands(MakeViewCommand::class);
     }
 }
