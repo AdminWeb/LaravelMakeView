@@ -21,6 +21,11 @@ class MakeViewProvider extends ServiceProvider
 
     public function register()
     {
-        $this->commands(MakeViewCommand::class);
+        $base = $this->app->basePath();
+        $this->app->singleton('make:view', function ($app) use ($base) {
+            return new MakeViewCommand($base);
+        });
+
+        $this->commands('make:view');
     }
 }

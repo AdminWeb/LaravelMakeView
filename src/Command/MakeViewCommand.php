@@ -16,8 +16,11 @@ class MakeViewCommand extends Command
     protected $signature = 'make:view {view} {layout?} {section?}';
     protected $description = 'Add command to make view on artisan tool';
 
-    public function __construct()
+    private $path = null;
+
+    public function __construct($mainpath)
     {
+        $this->path = $mainpath;
         parent::__construct();
     }
 
@@ -34,8 +37,8 @@ class MakeViewCommand extends Command
         $count = count($paths) - 1;
         for ($i = 0; $i < $count; $i++) {
             $path .= $paths[$i] . '/';
-            if (!is_dir(\resource_path('views/' . $path))) {
-                mkdir(\resource_path('views/' . $path));
+            if (!is_dir($this->path . '/resources/views/' . $path)) {
+                mkdir($this->path . '/resources/views/' . $path);
             }
         }
         if ($layout) {
@@ -44,8 +47,9 @@ class MakeViewCommand extends Command
         if ($section) {
             $content .= "@section('{$section}') \n\n\n\n\n@endsection";
         }
-        file_put_contents(\resource_path('views/' . $path . $view . '.blade.php'), $content);
+        file_put_contents($this->path . '/resources/views/' . $path . $view . '.blade.php', $content);
         $this->info('Success on created view.');
+
 
     }
 }
