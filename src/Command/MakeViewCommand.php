@@ -34,8 +34,8 @@ class MakeViewCommand extends Command
         $count = count($paths) - 1;
         for ($i = 0; $i < $count; $i++) {
             $path .= $paths[$i] . '/';
-            if (!is_dir(resource_path('views/' . $path))) {
-                mkdir(resource_path('views/' . $path));
+            if (!is_dir(\resource_path('views/' . $path))) {
+                mkdir(\resource_path('views/' . $path));
             }
         }
         if ($layout) {
@@ -44,7 +44,7 @@ class MakeViewCommand extends Command
         if ($section) {
             $content .= "@section('{$section}') \n\n\n\n\n@endsection";
         }
-        file_put_contents(resource_path('views/' . $path . $view . '.blade.php'), $content);
+        file_put_contents(\resource_path('views/' . $path . $view . '.blade.php'), $content);
         $this->info('Success on created view.');
 
     }
