@@ -5,6 +5,7 @@ This package add funcionality to artisan of create view files.
 
 Installation
 ------------
+Use `composer require adminweb/laravel-make-view`. 
 
 Add the `LaravelMakeView\Provider\MakeViewProvider::class` to array of service provider on config/app.php of your application.
 

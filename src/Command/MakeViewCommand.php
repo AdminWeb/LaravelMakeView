@@ -27,13 +27,18 @@ class MakeViewCommand extends Command
     public function handle()
     {
         $arguments = $this->argument();
-        $view = $arguments['view'];
         $layout = $arguments['layout'];
         $section = $arguments['section'];
+        $path = $this->makePath($arguments['view']);
+        $content = $this->getContent($layout, $section);
+        $this->createView($path, $content);
+    }
+
+    private function makePath($view)
+    {
         $paths = explode('.', $view);
         $view = end($paths);
         $path = '';
-        $content = '';
         $count = count($paths) - 1;
         for ($i = 0; $i < $count; $i++) {
             $path .= $paths[$i] . '/';
@@ -41,15 +46,24 @@ class MakeViewCommand extends Command
                 mkdir($this->path . '/resources/views/' . $path);
             }
         }
+        return $this->path . '/resources/views/' . $path . $view;
+    }
+
+    private function getContent($layout, $section)
+    {
+        $content = '';
         if ($layout) {
             $content .= "@extends('{$layout}')\n\n";
         }
         if ($section) {
             $content .= "@section('{$section}') \n\n\n\n\n@endsection";
         }
-        file_put_contents($this->path . '/resources/views/' . $path . $view . '.blade.php', $content);
+        return $content;
+    }
+
+    private function createView($path, $content)
+    {
+        file_put_contents($path . '.blade.php', $content);
         $this->info('Success on created view.');
-
-
     }
 }
