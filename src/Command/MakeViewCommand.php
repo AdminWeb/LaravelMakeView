@@ -13,7 +13,7 @@ use Illuminate\Console\Command;
 class MakeViewCommand extends Command
 {
 
-    protected $signature = 'make:view {layout?} {section?}';
+    protected $signature = 'make:view {view} {layout?} {section?}';
     protected $description = 'Add command to make view on artisan tool';
 
     public function __construct()
