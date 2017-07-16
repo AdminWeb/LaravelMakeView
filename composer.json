@@ -4,7 +4,7 @@
   "type": "library",
   "minimum-stability":"stable",
   "license": "MIT",
-  "version": "0.7.2",
+  "version": "v0.7.2",
   "authors": [
     {
       "name": "IgorDePaula",
